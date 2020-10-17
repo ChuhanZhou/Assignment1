@@ -224,6 +224,10 @@
                     {
                         allFamily = allFamily.GetFamilyListByPerson(ModelManager.GetAllChild().GetChildById(int.Parse(searchInfo1)));
                     }
+                    else
+                    {
+                        allFamily = new FamilyList();
+                    }
                 }
                 break;
             case "Number Of Person":

@@ -163,7 +163,7 @@ namespace Assignment1.Data
         public AdultList GetAdultListByJob(string job)
         {
             var choose = new AdultList();
-            foreach (var Adult in adults.Cast<Adult>().Where(Adult => Adult.JobTitle.Equals(job)))
+            foreach (var Adult in adults.Where(Adult => Adult.JobTitle.Equals(job)))
             {
                 choose.AddAdult(Adult);
             }

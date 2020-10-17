@@ -11,7 +11,7 @@ public class Adult : Person {
         "Teacher","Engineer","Garbage Collector","Shepherd","Pilot","Police Officer",
         "Pirate","Fireman","Astronaut","Captain","Soldier","Pizza Chef","Chef","Janitor",
         "Factory Worker","Chauffeur","Waitress","Ninja","Doctor","Nurse","Chemist","Caretaker",
-        "Gardener","Mascot","Athlete"
+        "Gardener","Mascot","Athlete","Entrepreneur","Archbishop"
     }.ToList();
     [ValidJob]
     public string JobTitle { get; set; }

@@ -63,8 +63,17 @@
                 <option>F</option>
             </select>
             break;
+        case "Job":
+            <select class="form-control selectpicker" style="float: left;position: relative;width:auto;height: 32px;top: 4px" @bind="@searchInfo1" @onclick="SearchByKeyWord">
+                <option>All</option>
+                @foreach (string job in Adult.ValidJob)
+                {
+                    <option>@job</option>
+                }
+            </select>
+            break;
     }
-    @if (searchKeyWord != "All" && searchKeyWord != "Sex")
+    @if (searchKeyWord != "All" && searchKeyWord != "Sex" && searchKeyWord != "Job")
     {
         <button class="btn-primary" style="float: left;position: relative;width:auto;left: 10px;height: 32px;top: 4px;border-radius: 5px" @onclick="SearchByKeyWord">Search</button>
     }
@@ -134,7 +143,7 @@
 @code {
     private static readonly List<string> KeyWordList = new[]
     {
-        "All","Id","Name","Age","Height","Weight","Sex"
+        "All","Id","Name","Age","Height","Weight","Sex","Job"
     }.ToList();
     private AdultList allAdult;
     private ChildList allChild;
@@ -202,6 +211,10 @@
                     searchInfo1 = "All";
                     searchInfo2 = null;
                     break;
+                case "Job":
+                    searchInfo1 = "All";
+                    searchInfo2 = null;
+                    break;
             }
             SearchByKeyWord();
         }
@@ -258,6 +271,16 @@
                 if (searchInfo1!="All")
                 {
                     showList = showList.GetPersonListBySex(searchInfo1);
+                }
+                break;
+            case "Job":
+                if (searchInfo1!="All")
+                {
+                    showList = new PersonList();
+                    foreach (var adult in allAdult.GetAdultListByJob(searchInfo1).adults)
+                    {
+                        showList.AddPerson(adult);
+                    }
                 }
                 break;
         }

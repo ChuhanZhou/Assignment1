@@ -18,19 +18,6 @@ namespace Assignment1.Data
             modelPackage = new ModelPackage();
             dataFileName = "FileData.json";
             readData();
-            AddAdult(new Adult()
-            {
-                Id = 423,
-                FirstName = "Kiana",
-                LastName = "Kaslana",
-                HairColor = "White",
-                EyeColor = "Blue",
-                Age = 19,
-                Weight = 49,
-                Height = 163,
-                Sex = "F",
-                JobTitle = "Teacher"
-            });
         }
 
         private void readData()
