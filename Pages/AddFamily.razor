@@ -226,15 +226,22 @@
     
     protected override async Task OnInitializedAsync()
     {
-        newFamily = new Family();
-        error = null;
-        errorForAdult = null;
-        errorForChild = null;
-        errorForPet = null;
-        addPet = new Pet
+        if (MainLayout.IsLogin())
         {
-            Species = Pet.ValidSpecies[0]
-        };
+            newFamily = new Family();
+            error = null;
+            errorForAdult = null;
+            errorForChild = null;
+            errorForPet = null;
+            addPet = new Pet
+            {
+                Species = Pet.ValidSpecies[0]
+            };
+        }
+        else
+        {
+            NavigationManager.NavigateTo("");
+        }
     }
 
     private void AddAdult()

@@ -146,7 +146,14 @@
     
     protected override async Task OnInitializedAsync()
     {
-        InitAllFamily();
+        if (MainLayout.IsLogin())
+        {
+            InitAllFamily();
+        }
+        else
+        {
+            NavigationManager.NavigateTo("");
+        }
     }
 
     private void InitAllFamily()

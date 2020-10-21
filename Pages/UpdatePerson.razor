@@ -183,10 +183,17 @@
     
     protected override async Task OnInitializedAsync()
     {
-        addPet = new Pet
+        if (MainLayout.IsLogin())
         {
-            Species = Pet.ValidSpecies[0]
-        };
+            addPet = new Pet
+            {
+                Species = Pet.ValidSpecies[0]
+            };
+        }
+        else
+        {
+            NavigationManager.NavigateTo("");
+        }
     }
 
     public static void setInfo(Adult adult)

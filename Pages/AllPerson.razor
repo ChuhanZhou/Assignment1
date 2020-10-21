@@ -156,11 +156,18 @@
     
     protected override async Task OnInitializedAsync()
     {
-        error = null;
-        searchKeyWord = KeyWordList[0];
-        historyKeyWord = searchKeyWord;
-        showList = new PersonList();
-        InitShowList();
+        if (MainLayout.IsLogin())
+        {
+            error = null;
+            searchKeyWord = KeyWordList[0];
+            historyKeyWord = searchKeyWord;
+            showList = new PersonList();
+            InitShowList();
+        }
+        else
+        {
+            NavigationManager.NavigateTo("");
+        }
     }
 
     private void InitShowList()

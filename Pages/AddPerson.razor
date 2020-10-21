@@ -186,26 +186,33 @@
 
     protected override async Task OnInitializedAsync()
     {
-        newPerson = new Person
+        if (MainLayout.IsLogin())
         {
-            Id = 0,
-            FirstName = null,
-            LastName = null,
-            HairColor = Person.ValidHairColor[0],
-            EyeColor = Person.ValidEyeColor[0],
-            Age = 0,
-            Weight = 0,
-            Height = 0,
-            Sex = Person.ValidSex[0],
-        };
-        jobTitle = Adult.ValidJob[0];
-        interests = new List<Interest>();
-        pets = new List<Pet>();
-        personType = "Adult";
-        addPet = new Pet
+            newPerson = new Person
+            {
+                Id = 0,
+                FirstName = null,
+                LastName = null,
+                HairColor = Person.ValidHairColor[0],
+                EyeColor = Person.ValidEyeColor[0],
+                Age = 0,
+                Weight = 0,
+                Height = 0,
+                Sex = Person.ValidSex[0],
+            };
+            jobTitle = Adult.ValidJob[0];
+            interests = new List<Interest>();
+            pets = new List<Pet>();
+            personType = "Adult";
+            addPet = new Pet
+            {
+                Species = Pet.ValidSpecies[0]
+            };
+        }
+        else
         {
-            Species = Pet.ValidSpecies[0]
-        };
+            NavigationManager.NavigateTo("");
+        }
     }
 
     private void ChooseInterest(string chooseInterest)

@@ -84,7 +84,14 @@
 
     protected override async Task OnInitializedAsync()
     {
-        InitInfo();
+        if (MainLayout.IsLogin())
+        {
+            InitInfo();
+        }
+        else
+        {
+            NavigationManager.NavigateTo("");
+        }
     }
     
     private void InitInfo()

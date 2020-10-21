@@ -227,15 +227,22 @@
     
     protected override async Task OnInitializedAsync()
     {
-        newFamily = oldFamily.Copy();
-        error = null;
-        errorForAdult = null;
-        errorForChild = null;
-        errorForPet = null;
-        addPet = new Pet
+        if (MainLayout.IsLogin())
         {
-            Species = Pet.ValidSpecies[0]
-        };
+            newFamily = oldFamily.Copy();
+            error = null;
+            errorForAdult = null;
+            errorForChild = null;
+            errorForPet = null;
+            addPet = new Pet
+            {
+                Species = Pet.ValidSpecies[0]
+            };
+        }
+        else
+        {
+            NavigationManager.NavigateTo("");
+        }
     }
 
     public static void SetInfo(Family family)
